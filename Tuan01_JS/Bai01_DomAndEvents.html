@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #333;
+            color: white;
+        }
+        .number {
+            font-size: 6rem;
+            width: 15rem;
+            height: 15rem;
+            margin: 20px auto;
+            background-color: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .guess {
+            font-size: 2rem;
+            width: 4rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .again {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            background-color: #eee;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="again">Again</button>
+    <p class="message">Start guessing...</p>
+    <p class="score">Score: <span id="score">20</span></p>
+    <div class="number">?</div>
+    <input class="guess" type="number" placeholder="Enter your guess">
+
+    <script>
+        let score = 20;
+        let secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+        function resetGame() {
+            score = 20;
+            secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+            document.querySelector('.message').textContent = 'Start guessing...';
+            document.querySelector('#score').textContent = score;
+            document.querySelector('.number').textContent = '?';
+            document.querySelector('.guess').value = '';
+
+            document.querySelector('body').style.backgroundColor = '#222';
+            document.querySelector('.number').style.width = '15rem';
+        }
+
+        document.querySelector('.again').addEventListener('click', resetGame);
+    </script>
+</body>
+</html>
